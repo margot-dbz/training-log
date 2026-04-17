@@ -1,0 +1,222 @@
+{
+  "profile": {
+    "name": "Me",
+    "gender": "female",
+    "age": 34,
+    "height_cm": 168,
+    "weight_kg": 58
+  },
+  "exercises": [
+    { "id": "pullup",       "name": "Assisted pull-up",   "category": "strength", "default": { "kg": -10, "sets": 3, "reps": 6 } },
+    { "id": "dip",          "name": "Assisted dip",       "category": "strength", "default": { "kg": -10, "sets": 3, "reps": 8 } },
+    { "id": "vrow",         "name": "Vertical row",       "category": "strength", "default": { "kg": 39,  "sets": 3, "reps": 10 } },
+    { "id": "hrow",         "name": "High row",           "category": "strength", "default": { "kg": 12,  "sets": 3, "reps": 10 } },
+    { "id": "rowmachine",   "name": "Row machine",        "category": "strength", "default": { "kg": 25,  "sets": 3, "reps": 10 } },
+    { "id": "chestpress",   "name": "Chest press",        "category": "strength", "default": { "kg": 20,  "sets": 3, "reps": 10 } },
+    { "id": "shoulderpress","name": "Shoulder press",     "category": "strength", "default": { "kg": 20,  "sets": 3, "reps": 6 } },
+    { "id": "legraisestr",  "name": "Straight leg raise", "category": "core",     "default": { "sets": 3, "reps": 5 } },
+    { "id": "plank",        "name": "Plank",              "category": "core",     "default": { "sets": 1, "secs": 30 } },
+    { "id": "sideplank",    "name": "Side plank",         "category": "core",     "default": { "sets": 2, "secs": 30 } },
+    { "id": "deadbug",      "name": "Dead bug",           "category": "core",     "default": { "sets": 1, "secs": 60 } },
+    { "id": "bridge",       "name": "Bridge",             "category": "core",     "default": { "sets": 3, "reps": 12 } },
+    { "id": "leglift",      "name": "Leg lifts",          "category": "core",     "default": { "sets": 3, "reps": 10 } },
+    { "id": "hipdip",       "name": "Hip dips",           "category": "core",     "default": { "sets": 3, "reps": 10 } },
+    { "id": "treadmill",    "name": "Treadmill",          "category": "cardio",   "default": { "mins": 15, "note": "intervals 9–12 km/h" } },
+    { "id": "inclinewalk",  "name": "Incline walk",       "category": "cardio",   "default": { "mins": 10, "note": "6 km/h 10%" } },
+    { "id": "elasticband",  "name": "Elastic band",       "category": "physio",   "default": { "sets": 2, "reps": 12, "note": "shoulder + hip" } },
+    { "id": "stretch",      "name": "Stretching",         "category": "mobility", "default": { "mins": 10 } }
+  ],
+  "templates": [
+    {
+      "id": "full",
+      "name": "Full session",
+      "emoji": "💪",
+      "type": "full",
+      "intensity": 3,
+      "exercises": ["treadmill","inclinewalk","chestpress","shoulderpress","vrow","hrow","pullup","dip","plank","sideplank","deadbug","stretch"]
+    },
+    {
+      "id": "wristsafe",
+      "name": "Wrist-safe",
+      "emoji": "🤝",
+      "type": "strength",
+      "intensity": 3,
+      "exercises": ["inclinewalk","treadmill","rowmachine","elasticband","deadbug","plank","sideplank"]
+    },
+    {
+      "id": "light",
+      "name": "Light / recovery",
+      "emoji": "🌿",
+      "type": "light",
+      "intensity": 2,
+      "exercises": ["inclinewalk","leglift","bridge","deadbug","stretch"]
+    },
+    {
+      "id": "core",
+      "name": "Core focus",
+      "emoji": "🎯",
+      "type": "core",
+      "intensity": 2,
+      "exercises": ["plank","sideplank","deadbug","bridge","leglift","hipdip","legraisestr","stretch"]
+    }
+  ],
+  "sessions": [
+    {
+      "id": 1,
+      "date": "2026-03-10",
+      "type": "full",
+      "duration_min": 75,
+      "intensity": 3,
+      "components": ["cardio","strength","core","mobility"],
+      "exercises": [
+        { "id": "treadmill",    "note": "intervals 9–12 km/h" },
+        { "id": "inclinewalk",  "note": "" },
+        { "id": "vrow",         "kg": 39,  "sets": 3, "reps": 10 },
+        { "id": "pullup",       "kg": -20, "sets": 3, "reps": 10, "note": "superset with dip" },
+        { "id": "dip",          "kg": -20, "sets": 3, "reps": 8 },
+        { "id": "plank",        "sets": 1, "secs": 30 },
+        { "id": "sideplank",    "sets": 2, "secs": 30 },
+        { "id": "deadbug",      "sets": 1, "secs": 60 },
+        { "id": "bridge",       "sets": 3, "reps": 12 },
+        { "id": "stretch",      "mins": 10 }
+      ],
+      "notes": "Treadmill intervals 9–12km/h, incline walk. Vertical row 39kg 10×3. Assisted pull-up + dip superset ~10/8 ×3. Planks, leg lifts, side planks, hip dips. Bridge + dead bug. Stretch 10min.",
+      "week": "2026-W11"
+    },
+    {
+      "id": 2,
+      "date": "2026-03-11",
+      "type": "full",
+      "duration_min": 70,
+      "intensity": 3,
+      "components": ["cardio","strength","core"],
+      "exercises": [],
+      "notes": "Same structure as Monday: cardio + upper body + core.",
+      "week": "2026-W11"
+    },
+    {
+      "id": 3,
+      "date": "2026-03-12",
+      "type": "full",
+      "duration_min": 75,
+      "intensity": 4,
+      "components": ["cardio","strength","core"],
+      "exercises": [],
+      "notes": "Same structure, slightly harder intensity.",
+      "week": "2026-W11"
+    },
+    {
+      "id": 4,
+      "date": "2026-03-13",
+      "type": "light",
+      "duration_min": 45,
+      "intensity": 2,
+      "components": ["cardio","core","mobility"],
+      "exercises": [],
+      "notes": "Easier cardio. Reduced upper body. Light core. Short stretch.",
+      "week": "2026-W11"
+    },
+    {
+      "id": 5,
+      "date": "2026-03-14",
+      "type": "rest",
+      "duration_min": 0,
+      "intensity": 1,
+      "components": [],
+      "exercises": [],
+      "notes": "Rest day.",
+      "week": "2026-W11"
+    },
+    {
+      "id": 6,
+      "date": "2026-03-15",
+      "type": "activity",
+      "duration_min": 120,
+      "intensity": 4,
+      "components": [],
+      "exercises": [],
+      "notes": "~2h snowboard + skiing (first time, many falls). High functional stress.",
+      "week": "2026-W11"
+    },
+    {
+      "id": 7,
+      "date": "2026-03-16",
+      "type": "rest",
+      "duration_min": 0,
+      "intensity": 1,
+      "components": [],
+      "exercises": [],
+      "notes": "Recovery after snowboarding.",
+      "week": "2026-W11"
+    },
+    {
+      "id": 8,
+      "date": "2026-04-07",
+      "type": "full",
+      "duration_min": 80,
+      "intensity": 4,
+      "components": ["cardio","strength","core","mobility"],
+      "exercises": [
+        { "id": "treadmill",     "mins": 13, "note": "walk 6km/h + run 9km/h @10% incline" },
+        { "id": "inclinewalk",   "note": "10% intervals" },
+        { "id": "chestpress",    "kg": 20, "sets": 3, "reps": 10 },
+        { "id": "shoulderpress", "kg": 20, "sets": 3, "reps": 6 },
+        { "id": "vrow",          "kg": 39, "sets": 3, "reps": 10 },
+        { "id": "hrow",          "kg": 12, "sets": 3, "reps": 10 },
+        { "id": "pullup",        "kg": -10, "sets": 3, "reps": 6 },
+        { "id": "dip",           "kg": -10, "sets": 3, "reps": 6 },
+        { "id": "legraisestr",   "sets": 3, "reps": 5 },
+        { "id": "plank",         "sets": 1, "secs": 30 },
+        { "id": "sideplank",     "sets": 2, "secs": 30 },
+        { "id": "deadbug",       "sets": 1, "secs": 60 },
+        { "id": "stretch",       "mins": 7 }
+      ],
+      "notes": "Return after 3-week break. Felt strong. Wrist ok.",
+      "week": "2026-W15"
+    },
+    {
+      "id": 9,
+      "date": "2026-04-08",
+      "type": "rest",
+      "duration_min": 0,
+      "intensity": 1,
+      "components": [],
+      "exercises": [],
+      "notes": "Rest day.",
+      "week": "2026-W15"
+    },
+    {
+      "id": 10,
+      "date": "2026-04-09",
+      "type": "strength",
+      "duration_min": 55,
+      "intensity": 3,
+      "components": ["cardio","strength","core","physio"],
+      "exercises": [
+        { "id": "inclinewalk",  "note": "7.5–10% intervals" },
+        { "id": "treadmill",    "note": "short run 9km/h" },
+        { "id": "rowmachine",   "kg": 25, "sets": 3, "reps": 10 },
+        { "id": "deadbug",      "sets": 1, "secs": 120, "note": "slow" },
+        { "id": "plank",        "sets": 1, "secs": 30 },
+        { "id": "sideplank",    "sets": 2, "secs": 30 },
+        { "id": "elasticband",  "sets": 2, "reps": 12, "note": "2 types + hip" }
+      ],
+      "notes": "Wrist-safe session.",
+      "week": "2026-W15"
+    },
+    {
+      "id": 11,
+      "date": "2026-04-10",
+      "type": "cardio",
+      "duration_min": 50,
+      "intensity": 3,
+      "components": ["cardio","strength"],
+      "exercises": [
+        { "id": "treadmill", "mins": 15, "note": "8min walk 6km/h, alternating 11/9km/h @3.5% incline, 2min walk @0%" },
+        { "id": "pullup",    "kg": -10, "sets": 3, "reps": 6, "note": "intervals up to 14km/h" }
+      ],
+      "notes": "Pull-ups now -10kg assist ~6 reps×3. Running intervals up to 14km/h.",
+      "week": "2026-W15"
+    }
+  ]
+}
