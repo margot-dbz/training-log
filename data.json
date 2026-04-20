@@ -151,7 +151,7 @@
     },
     {
       "id": 8,
-      "date": "2026-04-07",
+      "date": "2026-03-17",
       "type": "full",
       "duration_min": 80,
       "intensity": 4,
@@ -171,23 +171,23 @@
         { "id": "deadbug",       "sets": 1, "secs": 60 },
         { "id": "stretch",       "mins": 7 }
       ],
-      "notes": "Return after 3-week break. Felt strong. Wrist ok.",
-      "week": "2026-W15"
+      "notes": "Heavy full session. Pull-ups now -10kg assist. Wrist ok.",
+      "week": "2026-W12"
     },
     {
       "id": 9,
-      "date": "2026-04-08",
+      "date": "2026-03-18",
       "type": "rest",
       "duration_min": 0,
       "intensity": 1,
       "components": [],
       "exercises": [],
       "notes": "Rest day.",
-      "week": "2026-W15"
+      "week": "2026-W12"
     },
     {
       "id": 10,
-      "date": "2026-04-09",
+      "date": "2026-03-19",
       "type": "strength",
       "duration_min": 55,
       "intensity": 3,
@@ -202,11 +202,11 @@
         { "id": "elasticband",  "sets": 2, "reps": 12, "note": "2 types + hip" }
       ],
       "notes": "Wrist-safe session.",
-      "week": "2026-W15"
+      "week": "2026-W12"
     },
     {
       "id": 11,
-      "date": "2026-04-10",
+      "date": "2026-03-25",
       "type": "cardio",
       "duration_min": 50,
       "intensity": 3,
@@ -215,8 +215,8 @@
         { "id": "treadmill", "mins": 15, "note": "8min walk 6km/h, alternating 11/9km/h @3.5% incline, 2min walk @0%" },
         { "id": "pullup",    "kg": -10, "sets": 3, "reps": 6, "note": "intervals up to 14km/h" }
       ],
-      "notes": "Pull-ups now -10kg assist ~6 reps×3. Running intervals up to 14km/h.",
-      "week": "2026-W15"
+      "notes": "Pull-ups -10kg assist ~6 reps×3. Running intervals up to 14km/h. Last session before 3-week break.",
+      "week": "2026-W13"
     }
   ]
 }
