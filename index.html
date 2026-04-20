@@ -2,179 +2,194 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="theme-color" content="#1a1a18">
   <title>Training Log</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="layout">
 
-    <aside class="sidebar">
-      <div class="logo">TRAINING<br>LOG</div>
-      <nav>
-        <button class="nav-btn active" data-tab="dashboard">Overview</button>
-        <button class="nav-btn" data-tab="log">Log session</button>
-        <button class="nav-btn" data-tab="history">History</button>
-        <button class="nav-btn" data-tab="progress">Progress</button>
-        <button class="nav-btn" data-tab="coach">Recommendations</button>
-      </nav>
-      <div class="sidebar-footer" id="profile-summary"></div>
-    </aside>
+  <!-- SCREENS -->
+  <div id="app">
 
-    <main class="content">
+    <!-- HOME -->
+    <div class="screen active" id="screen-home">
+      <div class="topbar">
+        <div class="topbar-title" id="greeting-text">Hey</div>
+        <div class="topbar-sub" id="today-text"></div>
+      </div>
+      <div class="scroll-area">
+        <div class="metrics-grid" id="home-metrics"></div>
+        <div class="section-label">Recent</div>
+        <div class="session-cards" id="recent-cards"></div>
+        <div class="section-label">Milestones</div>
+        <div class="mile-list" id="mile-list"></div>
+      </div>
+    </div>
 
-      <!-- DASHBOARD -->
-      <section id="tab-dashboard" class="tab active">
-        <div class="page-header">
-          <h1 id="greeting">Hey</h1>
-          <span class="page-sub" id="today-date"></span>
-        </div>
-        <div class="metrics-row" id="dashboard-metrics"></div>
-        <div class="two-col">
-          <div class="card">
-            <div class="card-label">Recent sessions</div>
-            <div id="recent-list"></div>
-          </div>
-          <div class="card">
-            <div class="card-label">Milestones</div>
-            <div id="milestones-list"></div>
-          </div>
-        </div>
-      </section>
+    <!-- LOG -->
+    <div class="screen" id="screen-log">
+      <div class="topbar">
+        <div class="topbar-title">Log session</div>
+        <button class="topbar-action" id="save-btn">Save</button>
+      </div>
+      <div class="scroll-area">
 
-      <!-- LOG SESSION -->
-      <section id="tab-log" class="tab">
-        <div class="page-header">
-          <h1>Log session</h1>
-          <span class="page-sub" id="log-date-display"></span>
-        </div>
-
-        <!-- Step 1: meta -->
-        <div class="card log-step" id="step-meta">
-          <div class="card-label">Session info</div>
-          <div class="meta-row">
-            <div class="field">
-              <label>Date</label>
-              <input type="date" id="f-date">
+        <!-- meta row -->
+        <div class="log-block">
+          <div class="log-row-3">
+            <div class="log-field">
+              <div class="log-label">Date</div>
+              <input type="date" id="f-date" class="log-input">
             </div>
-            <div class="field">
-              <label>Duration (min)</label>
-              <input type="number" id="f-dur" placeholder="60" min="5" max="300">
+            <div class="log-field">
+              <div class="log-label">Duration</div>
+              <div class="log-input-with-unit">
+                <input type="number" id="f-dur" placeholder="60" class="log-input" min="5" max="300">
+                <span class="unit">min</span>
+              </div>
             </div>
-            <div class="field">
-              <label>Intensity</label>
-              <div class="intensity-picker" id="intensity-picker">
-                <div class="int-btn" data-v="1">1</div>
-                <div class="int-btn" data-v="2">2</div>
-                <div class="int-btn selected" data-v="3">3</div>
-                <div class="int-btn" data-v="4">4</div>
-                <div class="int-btn" data-v="5">5</div>
+            <div class="log-field">
+              <div class="log-label">Intensity</div>
+              <div class="int-row" id="int-picker">
+                <div class="int-dot" data-v="1">1</div>
+                <div class="int-dot" data-v="2">2</div>
+                <div class="int-dot sel" data-v="3">3</div>
+                <div class="int-dot" data-v="4">4</div>
+                <div class="int-dot" data-v="5">5</div>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- Step 2: templates -->
-        <div class="card log-step">
-          <div class="card-label">Start from template <span class="hint">— or build manually below</span></div>
-          <div class="template-grid" id="template-grid"></div>
+        <!-- templates -->
+        <div class="section-label">Templates</div>
+        <div class="template-row" id="template-row"></div>
+
+        <!-- exercises -->
+        <div class="section-label-row">
+          <div class="section-label" style="margin:0">Exercises</div>
+          <button class="add-ex-btn" id="add-ex-btn">+ Add</button>
+        </div>
+        <div id="ex-list">
+          <div class="ex-empty">Pick a template or tap + Add</div>
         </div>
 
-        <!-- Step 3: exercise builder -->
-        <div class="card log-step">
-          <div class="card-label-row">
-            <div class="card-label">Exercises</div>
-            <button class="btn-ghost" id="add-exercise-btn">+ Add exercise</button>
-          </div>
-          <div id="exercise-list">
-            <div class="empty-exercises">Tap a template above or add exercises individually</div>
-          </div>
+        <!-- notes -->
+        <div class="log-block" style="margin-top:8px">
+          <textarea id="f-notes" class="notes-area" placeholder="Notes — how did it feel, anything different..." rows="3"></textarea>
         </div>
 
-        <!-- Step 4: notes + save -->
-        <div class="card log-step">
-          <div class="card-label">Notes <span class="hint">— optional extra context</span></div>
-          <textarea id="f-notes" rows="3" placeholder="How did it feel? Anything notable..."></textarea>
-          <div class="save-row">
-            <button class="btn-save" id="save-btn">Save session</button>
-            <span class="save-msg" id="save-msg"></span>
-          </div>
-        </div>
+        <div class="save-feedback" id="save-feedback"></div>
+        <div style="height:32px"></div>
+      </div>
+    </div>
 
-        <!-- Exercise picker modal -->
-        <div class="modal-backdrop" id="exercise-modal" style="display:none">
-          <div class="modal">
-            <div class="modal-header">
-              <span class="modal-title">Add exercise</span>
-              <button class="modal-close" id="modal-close">✕</button>
-            </div>
-            <div class="modal-search">
-              <input type="text" id="exercise-search" placeholder="Search or type new name...">
-            </div>
-            <div class="modal-cats" id="modal-cats"></div>
-            <div class="modal-list" id="modal-exercise-list"></div>
-            <div class="modal-new" id="modal-new-zone" style="display:none">
-              <div class="modal-new-label">Create new exercise</div>
-              <div class="modal-new-fields">
-                <select id="new-ex-cat">
-                  <option value="cardio">Cardio</option>
-                  <option value="strength" selected>Strength</option>
-                  <option value="core">Core</option>
-                  <option value="mobility">Mobility</option>
-                  <option value="physio">Physio</option>
-                </select>
-                <button class="btn-save" id="create-exercise-btn">Create + add</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+    <!-- HISTORY -->
+    <div class="screen" id="screen-history">
+      <div class="topbar">
+        <div class="topbar-title">History</div>
+        <select id="filter-type" class="topbar-select">
+          <option value="all">All</option>
+          <option value="full">Full</option>
+          <option value="cardio">Cardio</option>
+          <option value="strength">Strength</option>
+          <option value="light">Light</option>
+          <option value="activity">Activity</option>
+          <option value="rest">Rest</option>
+        </select>
+      </div>
+      <div class="scroll-area">
+        <div id="history-list"></div>
+      </div>
+    </div>
 
-      <!-- HISTORY -->
-      <section id="tab-history" class="tab">
-        <div class="page-header">
-          <h1>History</h1>
-          <select id="filter-type" class="filter-select">
-            <option value="all">All types</option>
-            <option value="full">Full session</option>
+    <!-- PROGRESS -->
+    <div class="screen" id="screen-progress">
+      <div class="topbar"><div class="topbar-title">Progress</div></div>
+      <div class="scroll-area">
+        <div class="chart-block">
+          <div class="chart-label">Sessions / week</div>
+          <div class="chart-wrap"><canvas id="c-freq" role="img" aria-label="Sessions per week">Weekly sessions.</canvas></div>
+        </div>
+        <div class="chart-block">
+          <div class="chart-label">Avg intensity</div>
+          <div class="chart-wrap"><canvas id="c-int" role="img" aria-label="Average intensity per week">Intensity trend.</canvas></div>
+        </div>
+        <div class="chart-block">
+          <div class="chart-label">Duration (min)</div>
+          <div class="chart-wrap"><canvas id="c-dur" role="img" aria-label="Session duration">Duration trend.</canvas></div>
+        </div>
+        <div style="height:24px"></div>
+      </div>
+    </div>
+
+    <!-- COACH -->
+    <div class="screen" id="screen-coach">
+      <div class="topbar">
+        <div class="topbar-title">Recommendations</div>
+        <button class="topbar-action" id="refresh-recs">Refresh</button>
+      </div>
+      <div class="scroll-area">
+        <div id="recs-loading" class="recs-loading" style="display:none">Analysing your training...</div>
+        <div id="recs-list"></div>
+        <div style="height:24px"></div>
+      </div>
+    </div>
+
+  </div><!-- /app -->
+
+  <!-- BOTTOM TAB BAR -->
+  <nav class="tabbar">
+    <button class="tab active" data-screen="home">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M3 9.5L10 3l7 6.5V17a1 1 0 01-1 1H4a1 1 0 01-1-1V9.5z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+      <span>Home</span>
+    </button>
+    <button class="tab" data-screen="log">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="7" stroke="currentColor" stroke-width="1.5"/><path d="M10 7v3l2 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      <span>Log</span>
+    </button>
+    <button class="tab" data-screen="history">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="3" y="3" width="14" height="14" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M7 7h6M7 10h6M7 13h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      <span>History</span>
+    </button>
+    <button class="tab" data-screen="progress">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M3 14l4-4 3 3 4-5 3 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span>Progress</span>
+    </button>
+    <button class="tab" data-screen="coach">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 3a7 7 0 100 14A7 7 0 0010 3z" stroke="currentColor" stroke-width="1.5"/><path d="M10 9v1.5l1 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="10" cy="7" r="0.75" fill="currentColor"/></svg>
+      <span>Tips</span>
+    </button>
+  </nav>
+
+  <!-- EXERCISE PICKER SHEET -->
+  <div class="sheet-backdrop" id="ex-sheet" style="display:none">
+    <div class="sheet">
+      <div class="sheet-handle"></div>
+      <div class="sheet-header">
+        <input type="text" id="ex-search" class="sheet-search" placeholder="Search or type new name...">
+      </div>
+      <div class="sheet-cats" id="sheet-cats"></div>
+      <div class="sheet-list" id="sheet-list"></div>
+      <div class="sheet-new" id="sheet-new" style="display:none">
+        <div class="sheet-new-label">Create new exercise</div>
+        <div class="sheet-new-row">
+          <select id="new-cat" class="sheet-new-select">
             <option value="cardio">Cardio</option>
-            <option value="strength">Strength</option>
-            <option value="light">Light</option>
-            <option value="activity">Activity</option>
-            <option value="rest">Rest</option>
+            <option value="strength" selected>Strength</option>
+            <option value="core">Core</option>
+            <option value="mobility">Mobility</option>
+            <option value="physio">Physio</option>
           </select>
+          <button class="btn-create" id="btn-create">Create + add</button>
         </div>
-        <div id="history-list" class="card" style="padding:0 22px"></div>
-      </section>
-
-      <!-- PROGRESS -->
-      <section id="tab-progress" class="tab">
-        <div class="page-header"><h1>Progress</h1></div>
-        <div class="card chart-card">
-          <div class="card-label">Sessions per week</div>
-          <div class="chart-wrap"><canvas id="chart-freq" role="img" aria-label="Sessions per week bar chart">Weekly session frequency data.</canvas></div>
-        </div>
-        <div class="card chart-card">
-          <div class="card-label">Avg intensity per week</div>
-          <div class="chart-wrap"><canvas id="chart-int" role="img" aria-label="Average intensity per week line chart">Weekly intensity trend.</canvas></div>
-        </div>
-        <div class="card chart-card">
-          <div class="card-label">Session duration (min)</div>
-          <div class="chart-wrap"><canvas id="chart-dur" role="img" aria-label="Session duration bar chart">Duration per session.</canvas></div>
-        </div>
-      </section>
-
-      <!-- COACH -->
-      <section id="tab-coach" class="tab">
-        <div class="page-header"><h1>Recommendations</h1></div>
-        <div id="recs-loading" class="recs-loading" style="display:none">Analysing your training data...</div>
-        <div id="recs-container"></div>
-        <button class="btn-ghost" id="refresh-recs" style="margin-top:8px">Refresh ↻</button>
-      </section>
-
-    </main>
+      </div>
+    </div>
   </div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
